@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: white;
+}
+
+.navbar-brand,
+#offcanvasDarkNavbarLabel {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.navbar-toggler {
+  background-color: #00a6d1;
+}
+
+.card {
+  width: 100%;
+  max-width: 410px;
+}
+
+.text-primary {
+  color: #5a5ab9;
+}
+
+.text-aqua {
+  color: aqua;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+}
+
+fieldset {
+  border: 1px solid #5a5ab9; /* Border color matches the theme */
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 1rem;
+}
+
+h2 {
+  font-weight: bold;
+  color: #0aacd4;
+}
+
+.login-link {
+  font-size: larger;
+  text-decoration: none;
+  color: white;
+}
+
+.login-link:hover {
+  background-color: white;
+  color: black;
+}
+
+li {
+  font-size: large;
+}
+
+.alert-danger {
+  color: rgb(211, 0, 0);
+}
+
+.hyperlinks:hover {
+  color: rgb(61, 17, 137);
+}

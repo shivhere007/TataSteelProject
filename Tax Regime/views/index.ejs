@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tax Regime</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler me-2 text-white"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasDarkNavbar"
+          aria-controls="offcanvasDarkNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand me-auto" href="#" style="padding-left: 10px"
+          >Tax Regime</a
+        >
+        <span class="usertext text-white me-2"
+          >Welcome <%= user.username %>
+        </span>
+        <span class="usertext text-white me-1"> [ </span>
+        <a href="/logout" class="btn btn-link login-link">Log Out</a>
+        <span class="usertext text-white ms-1" id="rightbracet">]</span>
+
+        <!-- Offcanvas content for mobile view -->
+        <div
+          class="offcanvas offcanvas-start text-bg-dark"
+          tabindex="-1"
+          id="offcanvasDarkNavbar"
+          aria-labelledby="offcanvasDarkNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5
+              class="offcanvas-title"
+              style="padding-top: 15px"
+              id="offcanvasDarkNavbarLabel"
+            >
+              Tax Regime
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <hr class="bg-white" style="height: 2px" />
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Change Password</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Admin
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/my-tax-regime"
+                  >My Tax Regime</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/report"
+                  >Report</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid form-container">
+      <!-- Heading -->
+      <div class="heading-box">
+        Tax Regime Switch Option Facility from Default (New Tax Regime) to Old
+        Tax Regime for Financial Year 2024-25
+      </div>
+
+      <!-- Form with fieldset -->
+      <form action="/submit-switch-option" method="post" id="switchOptionForm">
+        <fieldset class="border p-3">
+          <legend class="float-none w-auto px-2 text-primary">
+            Record Details
+          </legend>
+
+          <!-- Record Details -->
+          <div class="mb-3 row">
+            <label for="pno" class="col-sm-3 col-form-label"
+              ><strong>Aadhar No:</strong></label
+            >
+            <div class="col-sm-9 input">
+              <input
+                type="text"
+                class="form-control"
+                id="aadharno"
+                name="aadharno"
+                value=" <%= user.aadharno %> "
+                readonly
+              />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="name" class="col-sm-3 col-form-label"
+              ><strong>Name:</strong></label
+            >
+            <div class="col-sm-9 input">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="username"
+                value=" <%= user.username %> "
+                readonly
+              />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="level" class="col-sm-3 col-form-label"
+              ><strong>Department:</strong></label
+            >
+            <div class="col-sm-9 input">
+              <input
+                type="text"
+                class="form-control"
+                id="department"
+                name="department"
+                value=" <%= user.department %> "
+                readonly
+              />
+            </div>
+          </div>
+
+          <!-- Documents Box -->
+          <div class="documents-box">
+            <strong style="font-size: large">Documents:</strong>
+            <!-- Circular and Tax Calculator Buttons -->
+            <div class="documents-box-buttons">
+              <a
+                href="styles/tax-regime-circular.pdf"
+                role="button"
+                class="btn btn-info me-2"
+                target="_blank"
+              >
+                Circular</a
+              >
+              <a
+                href="https://www.incometax.gov.in/iec/foportal/income-tax-calculator"
+                class="btn btn-secondary ms-3"
+                role="button"
+                target="_blank"
+              >
+                Tax Calculator
+              </a>
+            </div>
+          </div>
+
+          <!-- Footer Information -->
+          <div class="form-footer">
+            <p>
+              <strong>
+                You are currently under Income Tax default Option-I (New Tax
+                Regime).
+              </strong>
+            </p>
+
+            <!-- Dropdown to switch regimes - Aligned to right of question -->
+            <div class="mb-3 row">
+              <label for="switch-regime" class="col-sm-8 col-form-label"
+                >Do you want to switch from Option-I (New Tax Regime) to
+                Option-II (Old Tax Regime)?</label
+              >
+              <div class="col-sm-4">
+                <select
+                  class="form-select"
+                  id="switch-regime"
+                  name="switchOption"
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Checkbox options -->
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="read-docs"
+                name="readDocs"
+              />
+              <label class="form-check-label" for="read-docs">
+                I have read the enclosed documents carefully before exercising
+                the switching option.
+              </label>
+            </div>
+            <div class="form-check mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="one-switch"
+                name="oneSwitch"
+              />
+              <label class="form-check-label" for="one-switch">
+                I can switch only once in a Financial Year.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="btn-submit">
+          <button
+            type="submit"
+            class="btn btn-success"
+            id="submitButton"
+            disabled
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const readDocsCheckbox = document.getElementById("read-docs");
+        const oneSwitchCheckbox = document.getElementById("one-switch");
+        const submitButton = document.getElementById("submitButton");
+
+        function toggleSubmitButton() {
+          submitButton.disabled = !(
+            readDocsCheckbox.checked && oneSwitchCheckbox.checked
+          );
+        }
+
+        readDocsCheckbox.addEventListener("change", toggleSubmitButton);
+        oneSwitchCheckbox.addEventListener("change", toggleSubmitButton);
+      });
+
+      document
+        .getElementById("switchOptionForm")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault(); // Prevent default form submission
+          const formData = new FormData(event.target); // Create a FormData object
+          const urlEncodedData = new URLSearchParams(formData).toString(); // Convert to URL-encoded string
+
+          const response = await fetch("/submit-switch-option", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: urlEncodedData, // Send URL-encoded data
+          });
+
+          alert(await response.text()); // Show the response message
+        });
+    </script>
+  </body>
+</html>

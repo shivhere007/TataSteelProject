@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Table styles */
+thead {
+  background-color: #0d6efd;
+  color: white;
+}
+
+tbody {
+  background-color: #e9ecef;
+}
+
+fieldset {
+  background-color: white;
+}
+
+/* Input and form styles */
+input[readonly] {
+  background-color: #e9ecef;
+  border: none;
+  width: 100%;
+}
+
+.form-control {
+  max-width: 500px;
+}
+
+.form-footer p {
+  font-weight: bold;
+}
+
+#switch-regime {
+  max-width: 100px;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* Ensures the card covers the full width of the screen */
+.card {
+  max-width: 100%;
+  margin: 70px 20px 20px 20px;
+}
+
+/* Hide the record details initially */
+#record-details {
+  display: none;
+}
+.navbar-brand,
+#offcanvasDarkNavbarLabel {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.navbar-toggler,
+.card-header {
+  background-color: #00a6d1;
+}
+
+.usertext {
+  font-size: larger;
+}
+
+.login-link {
+  font-size: larger;
+  text-decoration: none;
+  color: red;
+}
+
+.login-link:hover {
+  background-color: white;
+  color: black;
+}
+
+li {
+  font-size: large;
+}
+
+legend {
+  font-size: 1rem;
+  font-weight: bold;
+}

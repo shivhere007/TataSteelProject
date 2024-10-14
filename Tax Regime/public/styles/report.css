@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.card {
+  max-width: 100%;
+  margin: 70px 20px 20px 20px;
+}
+.navbar-brand,
+#offcanvasDarkNavbarLabel {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.navbar-toggler,
+.card-header {
+  background-color: #00a6d1;
+}
+
+.usertext {
+  font-size: larger;
+}
+
+.login-link {
+  font-size: larger;
+  text-decoration: none;
+  color: red;
+}
+
+.login-link:hover {
+  background-color: white;
+  color: black;
+}
+
+li {
+  font-size: large;
+}
+legend {
+  font-size: 1rem;
+  font-weight: bold;
+}

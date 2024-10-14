@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request View - My Tax Regime</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/mytax.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler me-2 text-white"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasDarkNavbar"
+          aria-controls="offcanvasDarkNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand me-auto" href="#" style="padding-left: 10px"
+          >Tax Regime</a
+        >
+        <span class="usertext text-white me-2"
+          >Welcome <%= user.username %>
+        </span>
+        <span class="usertext text-white me-1"> [ </span>
+        <a href="/logout" class="btn btn-link login-link">Log Out</a>
+        <span class="usertext text-white ms-1" id="rightbracet">]</span>
+
+        <!-- Offcanvas content for mobile view -->
+        <div
+          class="offcanvas offcanvas-start text-bg-dark"
+          tabindex="-1"
+          id="offcanvasDarkNavbar"
+          aria-labelledby="offcanvasDarkNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5
+              class="offcanvas-title"
+              style="padding-top: 15px"
+              id="offcanvasDarkNavbarLabel"
+            >
+              Tax Regime
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <hr class="bg-white" style="height: 2px" />
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/index"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Change Password</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Admin
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >My Tax Regime</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/report"
+                  >Report</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Full-width container -->
+    <div class="container-fluid custom-container p-0">
+      <div class="card shadow-lg">
+        <div class="card-header text-white text-center">
+          <h4 class="mb-0">Request View</h4>
+        </div>
+        <div class="card-body">
+          <!-- User Table -->
+          <table class="table table-bordered mt-3">
+            <thead>
+              <tr>
+                <th class="w-25">Aadhar No</th>
+                <th class="w-25">Name</th>
+                <th class="w-25">Department</th>
+                <th class="w-25">Date & Time</th>
+              </tr>
+            </thead>
+            <tbody id="records-table">
+              <tr id="user-row">
+                <td><%= user.aadharno %></td>
+                <td><%= user.username %></td>
+                <td><%= user.department %></td>
+                <td><%= new Date(user.submittedat).toLocaleString() %></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Record Details Section -->
+          <fieldset class="border p-3" id="record-details">
+            <legend class="float-none w-auto px-2 text-primary">
+              Record Details
+            </legend>
+
+            <!-- Record Details Inputs -->
+            <div class="mb-3 row">
+              <label for="aadharno" class="col-sm-3 col-form-label"
+                >Aadhar No:</label
+              >
+              <div class="col-sm-9 input">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="aadharno"
+                  value="<%= user.aadharno %>"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="username" class="col-sm-3 col-form-label"
+                >Name:</label
+              >
+              <div class="col-sm-9 input">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  value="<%= user.username %>"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="department" class="col-sm-3 col-form-label"
+                >Department:</label
+              >
+              <div class="col-sm-9 input">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="department"
+                  value="<%= user.department %>"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <!-- Footer Information -->
+            <div class="form-footer">
+              <p>
+                You are currently under Income Tax default Option-I (New Tax
+                Regime).
+              </p>
+
+              <!-- Dropdown to switch regimes -->
+              <div class="mb-3 row">
+                <label for="switch-regime" class="col-sm-8 col-form-label">
+                  Do you want to switch from Option-I (New Tax Regime) to
+                  Option-II (Old Tax Regime)?
+                </label>
+                <div class="col-sm-4">
+                  <select class="form-select" disabled id="switch-regime">
+                    <option value="yes">
+                      <%= (user.switchoption === 'yes') ? 'Yes' : 'No' %>
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript to toggle record details -->
+    <script>
+      document
+        .getElementById("user-row")
+        .addEventListener("click", function () {
+          const recordDetails = document.getElementById("record-details");
+
+          if (
+            recordDetails.style.display === "none" ||
+            recordDetails.style.display === ""
+          ) {
+            recordDetails.style.display = "block";
+          } else {
+            recordDetails.style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>
